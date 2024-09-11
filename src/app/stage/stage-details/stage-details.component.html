@@ -1,0 +1,82 @@
+<div class="stage-details-container">
+    <!-- Display stage details -->
+    <div class="stage-info">
+      <h2>{{ stage?.title }}</h2>
+      <p><strong>Description:</strong> {{ stage?.description }}</p>
+      <p><strong>Skills Required:</strong></p>
+      <ul>
+        <li *ngFor="let skill of skills">{{ skill }}</li>
+      </ul>
+    </div>
+  
+    <!-- Form for submitting a new candidature -->
+    <div class="candidature-form">
+      <h3>Submit your Candidature</h3>
+      <form [formGroup]="candidatureForm" (ngSubmit)="submitCandidature()">
+        <div class="form-group">
+          <label for="prix">Prix</label>
+          <input id="prix" formControlName="prix" type="number" class="form-control" />
+          <div *ngIf="candidatureForm.get('prix').invalid && candidatureForm.get('prix').touched" class="error-message">
+            Price is required.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" formControlName="description" class="form-control"></textarea>
+          <div *ngIf="candidatureForm.get('description').invalid && candidatureForm.get('description').touched" class="error-message">
+            Description is required.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="temps">Temps (Timeframe)</label>
+          <input id="temps" formControlName="temps" type="text" class="form-control" />
+          <div *ngIf="candidatureForm.get('temps').invalid && candidatureForm.get('temps').touched" class="error-message">
+            Timeframe is required.
+          </div>
+        </div>
+  
+        <button type="submit" class="btn btn-primary" [disabled]="candidatureForm.invalid">Submit Candidature</button>
+      </form>
+    </div>
+  
+    <!-- List of Candidatures -->
+    <div class="candidature-list">
+      <h3>Candidatures for this Stage</h3>
+      <div *ngIf="candidatures?.length > 0; else noCandidatures">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Price</th>
+              <th>Description</th>
+              <th>Timeframe</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let candidature of candidatures">
+              <td>{{ candidature.user.name }}</td>
+              <td>{{ candidature.prix }}</td>
+              <td>{{ candidature.description }}</td>
+              <td>{{ candidature.temps }}</td>
+              <td>{{ candidature.etat }}</td>
+              <td>
+                <button *ngIf="candidature.etat === 'En attente'" class="btn btn-success" (click)="acceptCandidature(candidature)">
+                  Accept
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <!-- No Candidatures Available -->
+      <ng-template #noCandidatures>
+        <p>No candidatures submitted for this stage yet.</p>
+      </ng-template>
+    </div>
+  </div>
+  

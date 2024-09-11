@@ -1,0 +1,85 @@
+<div class="full-page-container">
+
+	<div class="full-page-sidebar">
+		<div class="full-page-sidebar-inner" data-simplebar>
+			<div class="sidebar-container">
+				<!-- Location -->
+				<div class="sidebar-widget">
+					<h3>Location</h3>
+					<div class="input-with-icon">
+						<div id="autocomplete-container">
+							<input id="autocomplete-input" type="text" placeholder="Location"  (keydown.enter)="filterByLocation($event)">
+						</div>
+						<i class="icon-material-outline-location-on"></i>
+					</div>
+				</div>
+
+				<!-- Keywords -->
+				<div class="sidebar-widget">
+					<h3>Keywords</h3>
+					<div class="keywords-container">
+						<div class="autocomplete-container">
+							<input type="text" id="autocomplete-input" placeholder="e.g. stage title" (keydown.enter)="filterByTitle($event)"/>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+
+				<!-- Skills -->
+				<div class="sidebar-widget">
+					<h3>Skills</h3>
+					<div class="tags-container">
+						<div class="tag" *ngFor="let skill of uniqueSkills; let i=index" (click)="onSkillsChange(skill)">
+							<input type="checkbox" id="tag{{i}}"/>
+							<label for="tag{{i}}">{{skill}}</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Stage Listing -->
+	<div class="full-page-content-container" data-simplebar>
+		<div class="full-page-content-inner">
+			<h3 class="page-title">Stage Listings</h3>
+
+			<div class="notify-box margin-top-15">
+				<div class="sort-by">
+					<span>Sort by:</span>
+					<select class="selectpicker hide-tick">
+						<option>Relevance</option>
+						<option>Newest</option>
+						<option>Oldest</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="listings-container grid-layout margin-top-35">
+				<a (click)="detail(stage)" class="job-listing" *ngFor="let stage of stages">
+					<div class="job-listing-details">
+						<div class="job-listing-company-logo">
+							<img src="../../assets/images/company-logo-01.png" alt="">
+						</div>
+						<div class="job-listing-description">
+							<h3 class="job-listing-title">{{stage.titre}}</h3>
+						</div>
+					</div>
+					<div class="job-listing-footer">
+						<ul>
+							<li><i class="icon-material-outline-location-on"></i> {{stage.user.adresse}}</li>
+							<li><i class="icon-material-outline-business-center"></i> {{stage.date_debut | date:'short'}}</li>
+							<li><i class="icon-material-outline-account-balance-wallet"></i> {{stage.stipend}} DT</li>
+						</ul>
+					</div>
+				</a>
+			</div>
+
+			<div class="clearfix"></div>
+
+			<div class="small-footer margin-top-15">
+				© 2024 <strong>SEBN</strong>. All Rights Reserved.
+			</div>
+		</div>
+	</div>
+</div>

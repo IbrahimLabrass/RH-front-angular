@@ -1,0 +1,80 @@
+<div class="full-page-container">
+    <div class="full-page-sidebar">
+        <div class="full-page-sidebar-inner" data-simplebar>
+            <div class="sidebar-container">
+                <!-- Location -->
+                <div class="sidebar-widget">
+                    <h3>Location</h3>
+                    <div class="input-with-icon">
+                        <div id="autocomplete-container">
+                            <input id="autocomplete-input" type="text" placeholder="Location" [(ngModel)]="location" (keydown.enter)="filterByLocation($event)">
+                        </div>
+                        <i class="icon-material-outline-location-on"></i>
+                    </div>
+                </div>
+                <!-- Keywords -->
+                <div class="sidebar-widget">
+                    <h3>Keywords</h3>
+                    <div class="keywords-container">
+                        <div class="autocomplete-container">
+                            <input type="text" id="autocomplete-input" placeholder="e.g. event title" (keydown.enter)="filterByTitle($event)">
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <!-- Categories -->
+                <div class="sidebar-widget">
+                    <h3>Categories</h3>
+                    <div class="tags-container">
+                        <div class="tag" *ngFor="let category of uniqueSkills; let i = index" (click)="filterBySkills(category)">
+                            <input type="checkbox" id="tag{{i}}">
+                            <label for="tag{{i}}">{{category}}</label>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Full Page Content -->
+    <div class="full-page-content-container" data-simplebar>
+        <div class="full-page-content-inner">
+            <h3 class="page-title">Event Search Results</h3>
+            <div class="notify-box margin-top-15">
+                <div class="sort-by">
+                    <span>Sort by:</span>
+                    <select class="selectpicker hide-tick">
+                        <option>Relevance</option>
+                        <option>Newest</option>
+                        <option>Oldest</option>
+                        <option>Random</option>
+                    </select>
+                </div>
+            </div>
+            <div class="listings-container grid-layout margin-top-35">
+                <!-- Event Listing -->
+                <a (click)="viewDetails(event)" class="job-listing" *ngFor="let event of events">
+                    <div class="job-listing-details">
+                        <div class="job-listing-company-logo">
+                            <img src="../../assets/images/company-logo-01.png" alt="">
+                        </div>
+                        <div class="job-listing-description">
+                            <h3 class="job-listing-title">{{event.title}}</h3>
+                        </div>
+                    </div>
+                    <div class="job-listing-footer">
+                        <ul>
+                            <li><i class="icon-material-outline-location-on"></i> {{event.location}}</li>
+                            <li><i class="icon-material-outline-business-center"></i> {{event.date | date:'short'}}</li>
+                        </ul>
+                    </div>
+                </a>    
+            </div>
+            <div class="small-footer margin-top-15">
+                <div class="small-footer-copyrights">
+                    © 2024 <strong>SEBN</strong>. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

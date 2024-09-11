@@ -1,0 +1,50 @@
+<!-- EventDetailComponent HTML -->
+<div class="event-detail-container">
+    <div class="event-detail-header">
+        <h2>{{ event.title }}</h2>
+        <p><strong>Location:</strong> {{ event.location }}</p>
+        <p><strong>Date:</strong> {{ event.date | date:'short' }}</p>
+        <p><strong>Description:</strong> {{ event.description }}</p>
+    </div>
+    <div class="event-detail-skills">
+        <h3>Required Skills</h3>
+        <ul>
+            <li *ngFor="let skill of skills">{{ skill }}</li>
+        </ul>
+    </div>
+
+    <div class="event-participation">
+        <h3>Participations</h3>
+        <ul class="participation-list">
+            <li *ngFor="let participation of participations">
+                <p><strong>User:</strong> {{ participation.user.name }}</p>
+                <p><strong>Description:</strong> {{ participation.description }}</p>
+                <p><strong>Price:</strong> {{ participation.prix }}</p>
+                <p><strong>Time:</strong> {{ participation.temps }}</p>
+                <p><strong>Status:</strong> {{ participation.etat }}</p>
+                <button *ngIf="participation.etat !== 'accepter'" (click)="acceptParticipation(participation)">
+                    Accept
+                </button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="participation-form">
+        <h3>Submit Participation</h3>
+        <form [formGroup]="participationForm" (ngSubmit)="submitParticipation()">
+            <div>
+                <label for="prix">Price</label>
+                <input id="prix" type="text" formControlName="prix">
+            </div>
+            <div>
+                <label for="description">Description</label>
+                <textarea id="description" formControlName="description"></textarea>
+            </div>
+            <div>
+                <label for="temps">Time</label>
+                <input id="temps" type="text" formControlName="temps">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>

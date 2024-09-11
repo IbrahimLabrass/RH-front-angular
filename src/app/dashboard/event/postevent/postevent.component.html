@@ -1,0 +1,84 @@
+<div class="dashboard-container">
+	<div class="dashboard-content-container" data-simplebar>
+	  <div class="dashboard-content-inner">
+  
+		<div class="dashboard-headline">
+		  <h3>Post an Event</h3>
+		  <nav id="breadcrumbs" class="dark">
+			<ul>
+			  <li><a href="#">Home</a></li>
+			  <li><a href="#">Dashboard</a></li>
+			  <li>Post an Event</li>
+			</ul>
+		  </nav>
+		</div>
+  
+		<div class="row">
+		  <form [formGroup]="eventForm" (ngSubmit)="addPost()" enctype="multipart/form-data">
+			<div class="col-xl-12">
+			  <div class="dashboard-box margin-top-0">
+				<div class="headline">
+				  <h3><i class="icon-feather-folder-plus"></i> Event Submission Form</h3>
+				</div>
+				<div class="content with-padding padding-bottom-10">
+				  <div class="row">
+					<!-- Document Upload -->
+					<div class="col-xl-4">
+					  <div class="submit-field">
+						<h5>Document</h5>
+						<input class="form-control" type="file" (change)="selectFile($event)" />
+						<input type="hidden" formControlName="document" #img>
+					  </div>
+					</div>
+  
+					<!-- Title Input -->
+					<div class="col-xl-4">
+					  <div class="submit-field">
+						<h5>Title</h5>
+						<input type="text" class="with-border" formControlName="title" placeholder="e.g., event title">
+					  </div>
+					</div>
+  
+					<!-- Location Input -->
+					<div class="col-xl-4">
+					  <div class="submit-field">
+						<h5>Location</h5>
+						<input type="text" class="with-border" formControlName="location" placeholder="e.g., New York, NY">
+					  </div>
+					</div>
+  
+					<!-- Date Input -->
+					<div class="col-xl-4">
+					  <div class="submit-field">
+						<h5>Date</h5>
+						<input type="datetime-local" formControlName="date" class="with-border">
+					  </div>
+					</div>
+  
+					<!-- Description Input -->
+					<div class="col-xl-12">
+					  <div class="submit-field">
+						<h5>Description</h5>
+						<textarea cols="30" rows="5" class="with-border" formControlName="description"></textarea>
+					  </div>
+					</div>
+  
+				  </div>
+				</div>
+			  </div>
+			</div>
+  
+			<!-- Submit Button -->
+			<div class="col-xl-12">
+			  <button type="submit" class="button ripple-effect big margin-top-30">
+				<i class="icon-feather-plus"></i> Post an Event
+			  </button>
+			</div>
+		  </form>
+		</div>
+  
+		<div class="dashboard-footer-spacer"></div>
+	  </div>
+	</div>
+  </div>
+  

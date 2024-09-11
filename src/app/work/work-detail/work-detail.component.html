@@ -1,0 +1,145 @@
+<!-- Titlebar
+================================================== -->
+<div class="single-page-header" data-background-image="images/single-task.jpg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="single-page-header-inner">
+					<div class="left-side">
+						<div class="header-image"><a href="single-company-profile.html"><img src="images/browse-companies-02.png" alt=""></a></div>
+						<div class="header-details">
+							<h3>{{work.titre}}</h3>
+							<h5>About the Employer</h5>
+							<ul>
+								<li><a href="single-company-profile.html"><i class="icon-material-outline-business"></i> Acue</a></li>
+								<li><div class="star-rating" data-rating="5.0"></div></li>
+								<li><img class="flag" src="images/flags/de.svg" alt=""> {{work.user.adresse}}</li>
+								<li><div class="verified-badge-with-title">Verified</div></li>
+							</ul>
+						</div>
+					</div>
+					<div class="right-side">
+						<div class="salary-box">
+							<div class="salary-type">Project Budget</div>
+							<div class="salary-amount">{{work.prix}} DT</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">		
+		<!-- Content -->
+		<div class="col-xl-8 col-lg-8 content-right-offset">			
+			<!-- Description -->
+			<div class="single-page-section">
+				<h3 class="margin-bottom-25">Project Description</h3>
+				<p>{{work.contenu}}</p>
+				<img [src]="work.document" alt="">
+				<a *ngIf="extension != 'png'" href="{{url}}">{{work.document}}</a>
+			</div>
+			<!-- Skills -->
+			<div class="single-page-section">
+				<h3>Skills Required</h3>
+				<div class="task-tags">
+					<span *ngFor="let skill of skills">{{skill}}</span>					
+				</div>
+			</div>
+			<div class="clearfix"></div>			
+			<!-- Freelancers Bidding -->
+			<div class="boxed-list margin-bottom-60">
+				<div class="boxed-list-headline">
+					<h3><i class="icon-material-outline-group"></i> Freelancers Bidding</h3>
+				</div>
+				<ul class="boxed-list-ul">
+					<li *ngFor="let bid of bids">
+						<div class="bid">
+							<!-- Avatar -->
+							<div class="bids-avatar">
+								<div class="freelancer-avatar">
+									<div class="verified-badge"></div>
+									<a href="single-freelancer-profile.html"><img src="images/user-avatar-big-01.jpg" alt=""></a>
+								</div>
+							</div>
+							
+							<!-- Content -->
+							<div class="bids-content">
+								<!-- Name -->
+								<div class="freelancer-name">
+									<h4><a href="single-freelancer-profile.html">{{bid.user.nom}} <img class="flag" src="images/flags/gb.svg" alt="" title="United Kingdom" data-tippy-placement="top"></a></h4>
+									<div class="star-rating" data-rating="4.9"></div>
+								</div>
+							</div>
+							
+							<!-- Bid -->
+							<div class="bids-bid">
+								<div class="bid-rate" *ngIf="work.user.id == user.id">
+									<div class="rate">{{bid.prix}} DT</div>
+									<span>in {{bid.temps}}days</span>
+								</div>
+							</div>&nbsp;
+								<div class="" *ngIf="work.user.id == user.id">
+									
+									<a *ngIf="bid.etat == 'en attent' && nbbids==false" (click)="accepter(bid)" class="button ripple-effect">Accepter</a>
+									<a *ngIf="bid.etat == 'accepter'" (click)="accepter(bid)" class="glyph fs1">
+										<div class="clearfix bshadow0 pbs">
+											<span class="icon-material-outline-check-circle">
+											
+											</span>
+										</div>
+									</a>
+									
+								</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+		
+
+		<!-- Sidebar -->
+		<div class="col-xl-4 col-lg-4">
+			<div class="sidebar-container">
+
+				<div class="countdown green margin-bottom-35">{{date}} Days Left</div>
+
+				<div class="sidebar-widget" *ngIf="work.user.id != user.id">
+					<div class="bidding-widget">
+						<div class="bidding-headline"><h3>Apply Form</h3></div>
+						<form [formGroup]="BidForm">
+						<div class="bidding-inner">
+
+							<!-- Headline -->
+							<span class="bidding-detail"><strong>Price</strong></span>
+
+							<!-- Price Slider -->
+							<input formControlName="prix"  />
+							
+							<!-- Headline -->
+							<span class="bidding-detail margin-top-30"><strong>Delivery Date</strong></span>
+
+							
+										<input type="text"  formControlName="temps" value="1">
+							<span class="bidding-detail margin-top-30"><strong>Description</strong></span>
+									
+							<textarea formControlName="description" id="" cols="30" rows="10"></textarea>
+
+							<!-- Button -->
+							<button id="snackbar-place-bid" (click)="publier()" class="button ripple-effect move-on-hover full-width margin-top-30"><span>Place a Bid</span></button>
+
+						</div>
+						</form>
+						<div class="bidding-signup">Don't have an account? <a href="#sign-in-dialog" class="register-tab sign-in popup-with-zoom-anim">Sign Up</a></div>
+					</div>
+				</div>
+
+				
+
+			</div>
+		</div>
+
+	</div>
+</div>

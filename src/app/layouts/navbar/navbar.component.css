@@ -1,0 +1,23 @@
+.button-login, .button-signup {
+    display: inline-block;
+    padding: 15px 23px;
+    margin: 0 5px;
+    border-radius: 3px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.button-login {
+    background-color: #4e08f1; /* Green */
+}
+
+.button-signup {
+    background-color: #4e08f1; /* Red */
+}
+
+.button-login:hover, .button-signup:hover {
+    background-color: #8804f5; /* Darker on hover */
+}

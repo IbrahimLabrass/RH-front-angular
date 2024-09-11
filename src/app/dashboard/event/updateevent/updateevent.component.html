@@ -1,0 +1,56 @@
+<div class="dashboard-container">
+	<!-- Dashboard Content -->
+	<div class="dashboard-content-container" data-simplebar>
+	  <div class="dashboard-content-inner">
+		
+		<!-- Dashboard Headline -->
+		<div class="dashboard-headline">
+		  <h3>Update Event</h3>
+		  <!-- Breadcrumbs -->
+		  <nav id="breadcrumbs" class="dark">
+			<ul>
+			  <li><a href="#">Home</a></li>
+			  <li><a href="#">Dashboard</a></li>
+			  <li>Update Event</li>
+			</ul>
+		  </nav>
+		</div>
+  
+		<!-- Row -->
+		<div class="row">
+  
+		  <!-- Dashboard Box -->
+		  <form [formGroup]="postForm" (ngSubmit)="addPost()" enctype="multipart/form-data">
+			<!-- Other form fields -->
+		  
+			<div class="col-xl-4">
+			  <div class="submit-field">
+				<h5>Document</h5>
+				<input class="form-control" (change)="upload(f, img)" type="file" #f />
+				<input type="hidden" formControlName="document" #img>
+			  </div>
+			</div>
+		  
+			<!-- Other form fields -->
+		  
+			<div class="col-xl-12">
+			  <button type="submit" class="button ripple-effect big margin-top-30">
+				<i class="icon-feather-plus"></i> Update Event
+			  </button>
+			</div>
+		  </form>
+		  
+		</div>
+		<!-- Row / End -->
+  
+		<!-- Footer -->
+		<div class="dashboard-footer-spacer"></div>
+	
+		<!-- Footer / End -->
+  
+	  </div>
+	</div>
+	<!-- Dashboard Content / End -->
+  
+  </div>
+  

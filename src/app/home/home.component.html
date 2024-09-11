@@ -1,0 +1,290 @@
+    <!-- Intro Banner
+    ================================================== -->
+    <!-- add class "disable-gradient" to enable consistent background overlay -->
+    <div class="intro-banner" data-background-image="../../../assets/images/sebnhome.jpg">
+        <div class="container">
+            
+            <!-- Intro Headline -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="banner-headline">
+                        <h3>
+                            <strong>Designing individual mobility for the future.
+                                <br>
+                                We are a system partner to the automotive industry with a global presence.
+                                </strong>
+                            <br>
+                            <span>We develop and produce customized wiring harness systems for a wide range of automobiles. In doing so, we are positioned worldwide. Our passion: finding new solutions for individual mobility. </span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="intro-banner-search-form margin-top-95">
+    
+                        <!-- Search Field -->
+                        <div class="intro-search-field with-autocomplete">
+                            <label for="autocomplete-input" class="field-title ripple-effect">Where?</label>
+                            <div class="input-with-icon">
+                                <input id="autocomplete-input" type="text" placeholder="">
+                                <i class="icon-material-outline-location-on"></i>
+                            </div>
+                        </div>
+    
+                        <!-- Search Field -->
+                        <div class="intro-search-field">
+                            <label for ="intro-keywords" class="field-title ripple-effect">What  you want?</label>
+                            <input id="intro-keywords" type="text" placeholder="Title or Keywords">
+                        </div>
+    
+                        <!-- Button -->
+                        <div class="intro-search-button">
+                            <button class="button ripple-effect" onclick="window.location.href='jobs-list-layout-full-page-map.html'">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Stats -->
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="intro-stats margin-top-45 hide-under-992px">
+                        <li>
+                            <strong class="counter">1,586</strong>
+                            <span>Jobs Posted</span>
+                        </li>
+                        <li>
+                            <strong class="counter">3,543</strong>
+                            <span>Events Posted</span>
+                        </li>
+                        <li>
+                            <strong class="counter">1,232</strong>
+                            <span>Stages</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    
+    
+    <!-- Content
+    ================================================== -->
+    <!-- Category Boxes -->
+    <div class="section margin-top-65">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+    
+                    <div class="section-headline centered margin-bottom-15">
+                        <h3>Our Team</h3>
+                    </div>
+    
+                    <!-- Category Boxes Container -->
+                    <div class="categories-container">
+    
+                        <!-- Category Box -->
+                        <a href="jobs-grid-layout-full-page.html" class="category-box">
+                            <div class="category-box-icon">
+                                <i class="icon-line-awesome-file-code-o"></i>
+                            </div>
+                            <div class="category-box-counter">612</div>
+                            <div class="category-box-content">
+                                <h3>Web & Software Dev</h3>
+                                <p>Software Engineer, Web / Mobile Developer & More</p>
+                            </div>
+                        </a>
+    
+                        <!-- Category Box -->
+                        <a href="jobs-list-layout-full-page-map.html" class="category-box">
+                            <div class="category-box-icon">
+                                <i class="icon-line-awesome-cloud-upload"></i>
+                            </div>
+                            <div class="category-box-counter">113</div>
+                            <div class="category-box-content">
+                                <h3>Data Science & Analitycs</h3>
+                                <p>Data Specialist / Scientist, Data Analyst & More</p>
+                            </div>
+                        </a>
+    
+    
+                        <!-- Category Box -->
+                        <a href="jobs-list-layout-1.html" class="category-box">
+                            <div class="category-box-icon">
+                                <i class="icon-line-awesome-image"></i>
+                            </div>
+                            <div class="category-box-counter">873</div>
+                            <div class="category-box-content">
+                                <h3>Graphics & Design</h3>
+                                <p>Creative Director, Web Designer & More</p>
+                            </div>
+                        </a>
+
+                         <!-- Category Box -->
+                         <a href="jobs-list-layout-1.html" class="category-box">
+                            <div class="category-box-icon">
+                                <i class="icon-feather-video"></i>
+                            </div>
+                            <div class="category-box-counter">873</div>
+                            <div class="category-box-content">
+                                <h3>Video Editing</h3>
+                                <p>Creative Editor, Video Editing<br> & More</p>
+                            </div>
+                        </a>
+    
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Category Boxes / End -->
+    
+    
+    <!-- Features Jobs -->
+<!-- Existing HTML code -->
+
+<!-- Features Jobs -->
+<div class="section gray margin-top-45 padding-top-65 padding-bottom-75">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <!-- Section Headline -->
+          <div class="section-headline margin-top-0 margin-bottom-35">
+            <h3>Find Our Offers</h3>
+            <a href="/work" class="headline-link">Browse All Jobs</a>
+          </div>
+          
+          <!-- Jobs Container -->
+          <div class="listings-container compact-list-layout margin-top-35">
+            
+            <!-- Job Listing -->
+            <a *ngFor="let offre of offres" href="single-job-page.html" class="job-listing with-apply-button">
+              <div class="job-listing-details">
+                <!-- Logo -->
+                <div class="job-listing-company-logo">
+                  <img src="../../assets/images/company-logo-01.png" alt="">
+                </div>
+                <!-- Details -->
+                <div class="job-listing-description">
+                  <h3 class="job-listing-title">{{ offre.titre }}</h3>
+                  <div class="job-listing-footer">
+                    <ul>
+                      <li><i class=""></i> {{offre.c.nom}}</li>
+                      <li><i class="icon-material-outline-account-balance-wallet"></i> {{offre.min}} DT</li>
+                      <li><i class="icon-material-outline-account-balance-wallet"></i> {{offre.max}} DT </li>
+                      <li><i class="icon-material-outline-access-time"></i> {{offre.date_publication}}</li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- Apply Button -->
+                <span class="list-apply-button ripple-effect">Apply Now</span>
+              </div>
+            </a>
+          </div>
+          <!-- Jobs Container / End -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Features Jobs / End -->
+  
+  <!-- Upcoming Events -->
+  <div class="section gray margin-top-45 padding-top-65 padding-bottom-75">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <!-- Section Headline -->
+          <div class="section-headline margin-top-0 margin-bottom-35">
+            <h3>Upcoming Events</h3>
+            <a href="/events" class="headline-link">Browse All Events</a>
+          </div>
+          
+          <!-- Events Container -->
+          <div class="listings-container compact-list-layout margin-top-35">
+            
+            <!-- Event Listing -->
+            <a *ngFor="let event of events" href="single-event-page.html" class="event-listing with-apply-button">
+              <div class="event-listing-details">
+                <!-- Logo -->
+                <div class="event-listing-company-logo">
+                  <img src="../../assets/images/company-logo-01.png" alt="">
+                </div>
+                <!-- Details -->
+                <div class="event-listing-description">
+                  <h3 class="event-listing-title">{{ event.title }}</h3>
+                  <div class="event-listing-footer">
+                    <ul>
+                      <li><i class="icon-material-outline-access-time"></i> {{event.date}}</li>
+                      <li><i class="icon-material-outline-location-on"></i> {{event.location}}</li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- Apply Button -->
+                <span class="list-apply-button ripple-effect">View Event</span>
+              </div>
+            </a>
+          </div>
+          <!-- Events Container / End -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Upcoming Events / End -->
+  
+  <!-- Stages -->
+  <div class="section gray margin-top-45 padding-top-65 padding-bottom-75">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <!-- Section Headline -->
+          <div class="section-headline margin-top-0 margin-bottom-35">
+            <h3>Available Stages</h3>
+            <a href="/stages" class="headline-link">Browse All Stages</a>
+          </div>
+          
+          <!-- Stages Container -->
+          <div class="listings-container compact-list-layout margin-top-35">
+            
+            <!-- Stage Listing -->
+            <a *ngFor="let stage of stages" href="single-stage-page.html" class="stage-listing with-apply-button">
+              <div class="stage-listing-details">
+                <!-- Logo -->
+                <div class="stage-listing-company-logo">
+                  <img src="../../assets/images/company-logo-01.png" alt="">
+                </div>
+                <!-- Details -->
+                <div class="stage-listing-description">
+                  <h3 class="stage-listing-title">{{ stage.title }}</h3>
+                  <div class="stage-listing-footer">
+                    <ul>
+                      <li><i class="icon-material-outline-access-time"></i> {{stage.date}}</li>
+                      <li><i class="icon-material-outline-location-on"></i> {{stage.location}}</li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- Apply Button -->
+                <span class="list-apply-button ripple-effect">View Stage</span>
+              </div>
+            </a>
+          </div>
+          <!-- Stages Container / End -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Stages / End -->
+  
+    <!-- Featured Jobs / End -->
+    
+    
+    
+    
+ 
+    
+    
+    

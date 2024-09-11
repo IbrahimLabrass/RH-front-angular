@@ -1,0 +1,128 @@
+<!-- Titlebar -->
+<div id="titlebar" class="gradient">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Register</h2>
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs" class="dark">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li>Register</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Page Content -->
+<div class="container">
+	<div class="row">
+		<div class="col-xl-5 offset-xl-3">
+			<div class="login-register-page">
+				<!-- Welcome Text -->
+				<div class="welcome-text">
+					<h3 style="font-size: 26px;">Let's create your account!</h3>
+					<span>Already have an account? <a href="/login">Log In!</a></span>
+				</div>
+
+				<!-- Account Type -->
+				<div class="account-type">
+					<div>
+						<input type="radio" [ngModel]="role" value="ROLE_USER" id="user-radio" (click)="clickRole($event)" class="account-type-radio" checked/>
+						<label for="user-radio" class="ripple-effect-dark"><i class="icon-material-outline-account-circle"></i> User</label>
+					</div>
+					
+					<div>
+						<input type="radio" [ngModel]="role" value="ROLE_RESP_STAGE" id="resp-stage-radio" (click)="clickRole($event)" class="account-type-radio"/>
+						<label for="resp-stage-radio" class="ripple-effect-dark"><i class="icon-material-outline-assignment"></i> R S</label>
+					</div>
+
+					<div>
+						<input type="radio" [ngModel]="role" value="ROLE_RESP_RECRU" id="resp-recru-radio" (click)="clickRole($event)" class="account-type-radio"/>
+						<label for="resp-recru-radio" class="ripple-effect-dark"><i class="icon-material-outline-group"></i> R R</label>
+					</div>
+					
+					<div>
+						<input type="radio" [ngModel]="role" value="ROLE_RESP_EVEN" id="resp-even-radio" (click)="clickRole($event)" class="account-type-radio"/>
+						<label for="resp-even-radio" class="ripple-effect-dark"><i class="icon-material-outline-event"></i> R E</label>
+					</div>
+				</div>
+
+				<!-- Form -->
+				<form [formGroup]="registerForm" id="register-account-form"  (ngSubmit)="onSubmit()">
+					<div class="input-with-icon-left">
+						<i class="icon-feather-user"></i>
+						<input type="text" class="input-text with-border" formControlName="nom" name="firstname-register" id="firstname-register" placeholder="First Name" maxlength="20" required [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" />
+						<div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+							<div *ngIf="f.nom.errors.required">First Name is required</div>
+						</div>
+					</div>
+
+					<div class="input-with-icon-left">
+						<i class="icon-feather-user"></i>
+						<input type="text" class="input-text with-border" formControlName="prenom" name="lastname-register" id="lastname-register" placeholder="Last Name" maxlength="20" required [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" />
+						<div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+							<div *ngIf="f.prenom.errors.required">Last Name is required</div>
+						</div>
+				    </div>
+
+					<div class="input-with-icon-left">
+						<i class="icon-line-awesome-user-secret"></i>
+						<input type="text" class="input-text with-border" formControlName="username" name="username-register" id="username-register" placeholder="Username" minlength="5" maxlength="20" required [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+						<div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+							<div *ngIf="f.username.errors.required">Username is required</div>
+						</div>
+					</div>
+
+					<div class="input-with-icon-left">
+						<i class="icon-feather-credit-card"></i>
+						<input type="text" class="input-text with-border" formControlName="cin" name="cin-register" id="cin-register" placeholder="National Identity Card Number" maxlength="8" required [ngClass]="{ 'is-invalid': submitted && f.cin.errors }"/>
+						<div *ngIf="submitted && f.cin.errors" class="invalid-feedback">
+							<div *ngIf="f.cin.errors.required">National Identity Card Number is required</div>
+						</div>
+					</div>
+
+					<div class="input-with-icon-left">
+						<i class="icon-material-baseline-mail-outline"></i>
+						<input type="email" class="input-text with-border" formControlName="email" name="emailaddress-register" id="emailaddress-register" placeholder="Email Address" required [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+						<div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+							<div *ngIf="f.email.errors.required">Email is required</div>
+						</div>
+					</div>
+
+					<div class="input-with-icon-left" title="Should be at least 8 characters long" data-tippy-placement="bottom">
+						<i class="icon-material-outline-lock"></i>
+						<input type="password" class="input-text with-border" formControlName="password" name="password-register" id="password-register" placeholder="Password" required [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+						<div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+							<div *ngIf="f.password.errors.required">Password is required</div>
+							<div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+						</div>
+					</div>
+
+					<div class="input-with-icon-left">
+						<i class="icon-material-outline-lock"></i>
+						<input type="password" class="input-text with-border" formControlName="confirmPassword" name="password-repeat-register" id="password-repeat-register" placeholder="Repeat Password" required [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"/>
+						<div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+							<div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+							<div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+						</div>
+					</div>
+					<button class="btn btn-primary mr-1">Register</button>
+				</form>
+
+				<!-- Social Login -->
+				<div class="social-login-separator"><span>or</span></div>
+				<div class="social-login-buttons">
+					<button class="facebook-login ripple-effect"><i class="icon-brand-facebook-f"></i> Register via Facebook</button>
+					<button class="google-login ripple-effect"><i class="icon-brand-google-plus-g"></i> Register via Google+</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Spacer -->
+<div class="margin-top-70"></div>
+<!-- Spacer / End-->

@@ -1,0 +1,80 @@
+<header id="header-container" class="fullwidth">
+    <!-- Header -->
+    <div id="header">
+        <div class="container">
+            <!-- Left Side Content -->
+            <div class="left-side">
+                <!-- Logo -->
+                <div id="logo">
+                    <a href="/home"><img src="../../../assets/images/logosebn.png" alt="Logo"></a>
+                </div>
+
+                <!-- Main Navigation -->
+                <nav id="navigation">
+                    <ul id="responsive">
+                        <li><a href="/home" class="current">Home</a></li>
+                        <li><a href="/work">Work</a></li>
+                        <li><a href="/event">Event</a></li>
+                        <li><a href="/stage">Stage</a></li>
+                        <li *ngIf="isConneted === 'yes'"><a href="/dashboard">Dashboard</a>
+                            <ul class="dropdown-nav">
+                                <li *ngIf="user.roles[0] === 'ROLE_USER'"><a href="#">Jobs</a>
+                                    <ul class="dropdown-nav">
+                                        <li><a href="/dashboard/job/managejobs">Manage Jobs</a></li>
+                                        <li><a href="/dashboard/job/postjob">Post a Job</a></li>
+                                    </ul>
+                                </li>
+                                <li *ngIf="user.roles[0] === 'ROLE_RESP_STAGE'"><a href="#">Stages</a>
+                                    <ul class="dropdown-nav">
+                                        <li><a href="/dashboard/stage/managestage">Manage Stages</a></li>
+                                        <li><a href="/dashboard/stage/poststage">Post a Stage</a></li>
+                                    </ul>
+                                </li>
+                                <li *ngIf="user.roles[0] === 'ROLE_RESP_RECRU'"><a href="#">Tasks</a>
+                                    <ul class="dropdown-nav">
+                                        <li><a href="/dashboard/task/managetasks">Manage Tasks</a></li>
+                                        <li><a href="/dashboard/task/posttask">Post a Task</a></li>
+                                    </ul>
+                                </li>
+                                <li *ngIf="user.roles[0] === 'ROLE_RESP_EVEN'"><a href="#">Events</a>
+                                    <ul class="dropdown-nav">
+                                        <li><a href="/dashboard/event/manageevents">Manage Events</a></li>
+                                        <li><a href="/dashboard/event/postevent">Post an Event</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="/contact">Get In Touch</a></li>
+                        <li><a href="/aboutus">About Us</a></li>
+                    </ul>
+                </nav>
+                <div class="clearfix"></div>
+            </div>
+            <!-- Left Side Content / End -->
+
+            <!-- Right Side Content -->
+            <div class="right-side">
+                <div *ngIf="isConneted === 'yes'">
+                    <!-- User Notifications and Menu -->
+                    <!-- (existing user menu code here) -->
+                </div>
+
+                <div *ngIf="isConneted !== 'yes'" class="header-widget">
+                    <a href="/login" class="button button-login">Login</a>
+                    <a href="/register" class="button button-signup">Sign Up</a>
+                </div>
+
+                <!-- Mobile Navigation Button -->
+                <span class="mmenu-trigger">
+                    <button class="hamburger hamburger--collapse" type="button">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </span>
+            </div>
+            <!-- Right Side Content / End -->
+        </div>
+    </div>
+    <!-- Header / End -->
+</header>

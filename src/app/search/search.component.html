@@ -1,0 +1,52 @@
+ <!-- Features Jobs -->
+ <div class="section gray margin-top-45 padding-top-65 padding-bottom-75">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                
+                <!-- Section Headline -->
+                <div class="section-headline margin-top-0 margin-bottom-35">
+                    <h3>Featured Jobs</h3>
+                    <a href="/work" class="headline-link">Browse All Jobs</a>
+                </div>
+                
+                <!-- Jobs Container -->
+                <div class="listings-container compact-list-layout margin-top-35">
+                    
+                    <!-- Job Listing -->
+                    <a *ngFor="let offre of offres" (click)="detail(offre)" class="job-listing with-apply-button">
+
+                        <!-- Job Listing Details -->
+                        <div class="job-listing-details">
+
+                            <!-- Logo -->
+                            <div class="job-listing-company-logo">
+                                <img src="images/company-logo-01.png" alt="">
+                            </div>
+
+                            <!-- Details -->
+                            <div class="job-listing-description">
+                                <h3 class="job-listing-title">{{ offre.titre }}</h3>
+
+                                <!-- Job Listing Footer -->
+                                <div class="job-listing-footer">
+                                    <ul>
+                                        <li><i class="icon-material-outline-business"></i> {{offre.user.nom}} {{offre.user.prenom}} <div class="verified-badge" title="Verified Employer" data-tippy-placement="top"></div></li>
+                                        <li><i class="icon-material-outline-location-on"></i> {{offre.user.adresse}}</li>
+                                        <li><i class="icon-material-outline-access-time"></i> {{offre.date_publication}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Apply Button -->
+                        </div>
+                    </a>
+
+                </div>
+                <!-- Jobs Container / End -->
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Featured Jobs / End -->

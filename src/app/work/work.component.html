@@ -1,0 +1,163 @@
+<!-- Page Content
+================================================== -->
+<div class="full-page-container">
+
+	<div class="full-page-sidebar">
+		<div class="full-page-sidebar-inner" data-simplebar>
+			<div class="sidebar-container">
+				
+				<!-- Location -->
+				<div class="sidebar-widget">
+					<h3>Location</h3>
+					<div class="input-with-icon">
+						<div id="autocomplete-container">
+							<input id="autocomplete-input" type="text" placeholder="Location" [ngModel]="location" (keydown.enter)="onLocationChange($event)">
+						</div>
+						<i class="icon-material-outline-location-on"></i>
+					</div>
+				</div>
+
+				
+				<!-- Keywords -->
+				<div class="sidebar-widget">
+					<h3>Keywords</h3>
+					<div class="keywords-container">
+						<div class="autocomplete-container">
+							<input type="text" id="autocomplete-input" placeholder="e.g. job title" (keydown.enter)="onTitleChange($event)"/>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				
+				
+
+				<!-- Salary -->
+				<div class="sidebar-widget">
+					
+					<div class="margin-top-55"></div>
+
+					<!-- Range Slider -->
+					
+				</div>
+
+				<!-- Tags -->
+				<div class="sidebar-widget">
+					<h3>Skills</h3>
+
+					<div class="tags-container">
+						<div class="tag" *ngFor="let u of unique;let i=index" (click)="onSkillsChange(u)">
+							<input type="checkbox" id="tag{{i}}"/>
+							<label for="tag{{i}}">{{u}}</label>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+
+			</div>
+			<!-- Sidebar Container / End -->
+
+			<!-- Search Button -->
+			
+			<!-- Search Button / End-->
+
+		</div>
+	</div>
+	<!-- Full Page Sidebar / End -->
+	
+	<!-- Full Page Content -->
+	<div class="full-page-content-container" data-simplebar>
+		<div class="full-page-content-inner">
+
+			<h3 class="page-title">Search Results</h3>
+
+			<div class="notify-box margin-top-15">
+				<div class="switch-container">
+						
+				</div>
+
+				<div class="sort-by">
+					<span>Sort by:</span>
+					<select class="selectpicker hide-tick">
+						<option>Relevance</option>
+						<option>Newest</option>
+						<option>Oldest</option>
+						<option>Random</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="listings-container grid-layout margin-top-35">
+				
+				<!-- Job Listing -->
+				<a (click)="detail(offre)" class="job-listing" *ngFor="let offre of offres">
+
+					<!-- Job Listing Details -->
+					<div class="job-listing-details">
+						<!-- Logo -->
+						<div class="job-listing-company-logo">
+							<img src="../../assets/images/company-logo-01.png" alt="">
+						</div>
+
+						<!-- Details -->
+						<div class="job-listing-description">
+							<h3 class="job-listing-title">{{offre.titre}}</h3>
+						</div>
+					</div>
+
+					<!-- Job Listing Footer -->
+					<div class="job-listing-footer">
+						
+						<ul>
+							<li><i class="icon-material-outline-location-on"></i> {{offre.user.adresse}}</li>
+							<li><i class="icon-material-outline-business-center"></i> {{offre.dead_line | date:'short'}}</li>
+							<li><i class="icon-material-outline-account-balance-wallet"></i> {{offre.min}} DT</li>
+							<li><i class="icon-material-outline-account-balance-wallet"></i> {{offre.max}} DT</li>
+						</ul>
+					</div>
+				</a>	
+
+			
+
+			</div>
+
+			<!-- Pagination -->
+			
+			<div class="clearfix"></div>
+			<!-- Pagination / End -->
+
+			<!-- Footer -->
+			<div class="small-footer margin-top-15">
+				<div class="small-footer-copyrights">
+					© 2024 <strong>SEBN</strong>. All Rights Reserved.
+				</div>
+				<ul class="footer-social-links">
+					<li>
+						<a href="#" title="Facebook" data-tippy-placement="top">
+							<i class="icon-brand-facebook-f"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#" title="Twitter" data-tippy-placement="top">
+							<i class="icon-brand-twitter"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#" title="Google Plus" data-tippy-placement="top">
+							<i class="icon-brand-google-plus-g"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#" title="LinkedIn" data-tippy-placement="top">
+							<i class="icon-brand-linkedin-in"></i>
+						</a>
+					</li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+			<!-- Footer / End -->
+
+		</div>
+	</div>
+	<!-- Full Page Content / End -->
+
+</div>
