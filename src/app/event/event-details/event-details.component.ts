@@ -1,64 +1,94 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { Participation } from 'src/app/shared/classes/participation';
-import { ParticipationService } from 'src/app/shared/services/participation.service';
+import { CondidatureService } from './../../shared/services/condidature.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-event-details',
+  selector: 'app-event-detail',
   templateUrl: './event-details.component.html',
   styleUrls: ['./event-details.component.css']
 })
 export class EventDetailComponent implements OnInit {
   event: any;
-  skills: any;
-  participations: Participation[] = [];
+  candidatures: any[] = [];
   user: any;
-  participationForm: FormGroup;
+  candidatureForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private participationService: ParticipationService
+    private candidatureService: CondidatureService
   ) {}
 
   ngOnInit(): void {
-    this.event = JSON.parse(localStorage.getItem('event'));
-    this.skills = this.event.skills.split(";");
-    this.user = JSON.parse(localStorage.getItem('userinfo'));
+    // Retrieve and parse stored stage and user information from localStorage
+    this.event = this.getStoredData('event');
+    this.user = this.getStoredData('userinfo');
 
-    this.participationForm = this.fb.group({
-      prix: [],
-      description: [],
-      temps: [],
-      event: { id: this.event.id },
-      user: { id: this.user.id },
-      etat: "En attent",
-    });
+    // Initialize the form with validators
+    this.initForm();
 
-    this.getParticipations();
+    // Load candidatures related to the stage
+    this.getCandidatures();
   }
 
-  getParticipations() {
-    this.participationService.getAllParticipations().subscribe(
+  // Method to safely retrieve and parse localStorage data
+  getStoredData(key: string) {
+    const storedData = localStorage.getItem(key);
+    return storedData ? JSON.parse(storedData) : null;
+  }
+
+  // Initialize the form with default values and validators
+  initForm() {
+    this.candidatureForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      description: ['', Validators.required],
+      experience: ['', [Validators.required, Validators.min(0)]],
+      event: [{ id: this.event.id }],
+      user: [{ id: this.user.id }],
+      etat: ['En attente'] // Default state is 'En attente'
+    });
+  }
+
+  // Fetch candidatures for the specific stage
+  getCandidatures() {
+    this.candidatureService.getcondidatureList().subscribe(
       data => {
-        this.participations = data.filter(p => p.event.id === this.event.id);
+        this.candidatures = data.filter(c => c.event.id === this.event.id);
       },
       error => {
-        console.log(error);
+        console.error("Error fetching candidatures:", error);
       }
     );
   }
 
-  submitParticipation() {
-    const newParticipation: Participation = this.participationForm.value;
-    newParticipation.id = this.participations.length + 1; // Simulate ID generation
-
-    this.participationService.createParticipation(newParticipation);
-    this.getParticipations(); // Refresh the list after adding
+  // Handle form submission for new candidature
+  submitCandidature() {
+    if (this.candidatureForm.valid) {
+      this.candidatureService.createcondidature(this.candidatureForm.value).subscribe(
+        data => {
+          console.log("Candidature submitted successfully:", data);
+        },
+        error => {
+          console.error("Error submitting candidature:", error);
+        }
+      );
+    } else {
+      console.error("Form is invalid. Please fill out all required fields.");
+    }
   }
 
-  acceptParticipation(participation: Participation) {
-    const updatedParticipation = { ...participation, etat: "accepter" };
-    this.participationService.updateParticipation(updatedParticipation);
-    this.getParticipations(); // Refresh the list after updating
+  // Accept a candidature by updating its status
+  acceptCandidature(candidature) {
+    const updatedCandidature = { ...candidature, etat: 'accepter' };
+
+    this.candidatureService.updatecondidature(candidature.id, updatedCandidature).subscribe(
+      data => {
+        console.log("Candidature accepted:", data);
+        this.getCandidatures(); // Refresh the candidatures list
+      },
+      error => {
+        console.error("Error accepting candidature:", error);
+      }
+    );
   }
 }

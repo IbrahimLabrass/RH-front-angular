@@ -1,50 +1,112 @@
-<!-- EventDetailComponent HTML -->
-<div class="event-detail-container">
-    <div class="event-detail-header">
-        <h2>{{ event.title }}</h2>
-        <p><strong>Location:</strong> {{ event.location }}</p>
-        <p><strong>Date:</strong> {{ event.date | date:'short' }}</p>
-        <p><strong>Description:</strong> {{ event.description }}</p>
+<!-- Titlebar -->
+<div class="single-page-header" data-background-image="images/single-task.jpg">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="single-page-header-inner">
+          <div class="left-side">
+            <div class="header-image">
+              <img src="../../assets/images/company-logo-01.png" alt="Event Logo">
+            </div>
+            <div class="header-details">
+              <h3>{{event.title}}</h3>
+              <h5>About the Organizer</h5>
+              <ul>
+                <li><i class="icon-material-outline-business"></i> {{event.name}}</li>
+                <li><img class="flag" src="images/flags/de.svg" alt="">{{event.location}}</li>
+                <li><div class="verified-badge-with-title">Verified</div></li>
+              </ul>
+            </div>
+          </div>
+          <div class="right-side">
+            <div class="salary-box">
+              <div class="salary-type">Event Date</div>
+              <div class="salary-amount">{{event.date | date:'short'}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="event-detail-skills">
-        <h3>Required Skills</h3>
-        <ul>
-            <li *ngFor="let skill of skills">{{ skill }}</li>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xl-8 col-lg-8 content-right-offset">
+      <div class="single-page-section">
+        <h3 class="margin-bottom-25">Event Description</h3>
+        <p>{{event.description}}</p>
+        <img [src]="event.document" alt="">
+        <a *ngIf="event.documentExtension != 'png'" href="{{event.document}}">Download Document</a>
+      </div>
+
+    
+
+      <div class="boxed-list margin-bottom-60">
+        <div class="boxed-list-headline">
+          <h3><i class="icon-material-outline-group"></i> Event Participants</h3>
+        </div>
+        <ul class="boxed-list-ul">
+          <li *ngFor="let candidature of candidatures">
+            <div class="bid">
+              <div class="bids-avatar">
+                <div class="freelancer-avatar">
+                  <div class="verified-badge"></div>
+                  <img src="images/user-avatar-big-01.jpg" alt="Participant Avatar">
+                </div>
+              </div>
+              <div class="bids-content">
+                <div class="freelancer-name">
+                  <h4>{{candidature.user.firstName}} {{candidature.user.lastName}}</h4>
+                  <div class="star-rating" data-rating="4.9"></div>
+                </div>
+              </div>
+              <div class="bids-bid">
+                <div class="bid-rate">
+                  <span>in {{candidature.temps}} days</span>
+                </div>
+              </div>
+              <div *ngIf="event.user.id == user.id">
+                <a *ngIf="candidature.etat == 'en attente'" (click)="acceptCandidature(candidature)" class="button ripple-effect">Accept</a>
+                <a *ngIf="candidature.etat == 'accepter'" class="glyph fs1">
+                  <div class="clearfix bshadow0 pbs">
+                    <span class="icon-material-outline-check-circle"></span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </li>
         </ul>
+      </div>
     </div>
 
-    <div class="event-participation">
-        <h3>Participations</h3>
-        <ul class="participation-list">
-            <li *ngFor="let participation of participations">
-                <p><strong>User:</strong> {{ participation.user.name }}</p>
-                <p><strong>Description:</strong> {{ participation.description }}</p>
-                <p><strong>Price:</strong> {{ participation.prix }}</p>
-                <p><strong>Time:</strong> {{ participation.temps }}</p>
-                <p><strong>Status:</strong> {{ participation.etat }}</p>
-                <button *ngIf="participation.etat !== 'accepter'" (click)="acceptParticipation(participation)">
-                    Accept
-                </button>
-            </li>
-        </ul>
-    </div>
+    <div class="col-xl-4 col-lg-4">
+      <div class="sidebar-container">
+        <div class="sidebar-widget">
+          <div class="bidding-widget">
+            <div class="bidding-headline">
+              <h3>Apply Form</h3>
+            </div>
+            <form [formGroup]="candidatureForm">
+              <div class="bidding-inner">
+                <span class="bidding-detail"><strong>First Name</strong></span>
+                <input formControlName="firstName" type="text" placeholder="Enter your first name" />
 
-    <div class="participation-form">
-        <h3>Submit Participation</h3>
-        <form [formGroup]="participationForm" (ngSubmit)="submitParticipation()">
-            <div>
-                <label for="prix">Price</label>
-                <input id="prix" type="text" formControlName="prix">
-            </div>
-            <div>
-                <label for="description">Description</label>
-                <textarea id="description" formControlName="description"></textarea>
-            </div>
-            <div>
-                <label for="temps">Time</label>
-                <input id="temps" type="text" formControlName="temps">
-            </div>
-            <button type="submit">Submit</button>
-        </form>
+                <span class="bidding-detail margin-top-30"><strong>Last Name</strong></span>
+                <input formControlName="lastName" type="text" placeholder="Enter your last name" />
+
+                <span class="bidding-detail margin-top-30"><strong>Description</strong></span>
+                <textarea formControlName="description" placeholder="Enter description"></textarea>
+
+                <span class="bidding-detail margin-top-30"><strong>Years of Experience</strong></span>
+                <input formControlName="experience" type="number" placeholder="Enter years of experience" />
+
+                <button (click)="submitCandidature()" class="button ripple-effect full-width margin-top-30">Submit Candidature</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

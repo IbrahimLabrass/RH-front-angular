@@ -43,7 +43,6 @@ export class PostjobComponent implements OnInit {
     this.postForm = this.fb.group({
       "titre":[''],
       "date_publication":[''],
-      "prix":[''],
       "document":[''],
       "description":[''],
       "user":[{'id':this.user.id}]
@@ -63,7 +62,7 @@ export class PostjobComponent implements OnInit {
     .subscribe(
       data => {
         console.log(data);
-        this.router.navigate(['/dashboard/tasks/managejobs'])
+        this.router.navigate(['/work'])
       },
       error => console.log(error));
 

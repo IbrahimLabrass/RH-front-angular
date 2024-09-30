@@ -40,17 +40,18 @@ export class PosttaskComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('userinfo'));
     this.fileInfos = this.uploadService.getFiles();
     this.postForm = this.fb.group({
-      "titre":[''],
+      titre: [''],
       "min":[''],
       "max":[''],
-      "date_publication":[''],
-      "dead_line":[''],
-      "document":[''],
-      "skills":[''],
-      "contenu":[''],
-      "user":[{'id':this.user.id}]
+     
+      date_publication: [''],
+      location: [''],
+      contenu: [''],
+      document: [''],
+      user: [{ id: this.user.id }]
+    });
 
-    })
+   
   }
 
   addPost(){
@@ -65,7 +66,7 @@ export class PosttaskComponent implements OnInit {
     .subscribe(
       data => {
         console.log(data);
-        this.router.navigate(['/dashboard/tasks/managetasks'])
+        this.router.navigate(['/home'])
       },
       error => console.log(error));
 

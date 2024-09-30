@@ -33,13 +33,13 @@
                                         </ul>
                                     </li>
                                     <!-- Uncomment if needed -->
-                                    <!-- <li>
+                                   <li>
                                         <a href="#">Tasks</a>
                                         <ul class="dropdown-nav">
                                             <li><a href="/dashboard/task/managetasks">Manage Tasks</a></li>
                                             <li><a href="/dashboard/task/posttask">Post a Task</a></li>
                                         </ul>
-                                    </li> -->
+                                    </li> 
                                     <li>
                                         <a href="#">Events</a>
                                         <ul class="dropdown-nav">
@@ -50,7 +50,7 @@
                                     <li>
                                         <a href="#">Stages</a>
                                         <ul class="dropdown-nav">
-                                            <li><a href="/dashboard/stage/managestage">Manage Stages</a></li>
+                                            <li><a href="/dashboard/stage/managestages">Manage Stages</a></li>
                                             <li><a href="/dashboard/stage/poststage">Post a Stage</a></li>
                                         </ul>
                                     </li>
@@ -89,7 +89,7 @@
                         <!-- User Avatar / Dropdown -->
                         <div class="header-notifications user-menu">
                             <div class="header-notifications-trigger">
-                                <a href="#"><div class="user-avatar status-online"><img [src]="userup.photo" alt="User Avatar"></div></a>
+                                <a href="#"><div class="user-avatar status-online"><img src="../../../assets/images/user.png" alt=""></div></a>
                             </div>
 
                             <!-- Dropdown -->
@@ -100,9 +100,9 @@
 
                                     <!-- User Name / Avatar -->
                                     <div class="user-details">
-                                        <div class="user-avatar status-online"><img [src]="userup.photo" alt="User Avatar"></div>
+                                        <div class="user-avatar status-online"><img src="../../../assets/images/user.png" alt=""></div>
                                         <div class="user-name">
-                                            <a href="/dashboard/profile">{{userup.nom}} {{userup.prenom}}</a>
+                                            <a href="/dashboard/profile">{{user.username}}</a>
                                             <span *ngIf="user.roles[0] === 'ROLE_ADMIN'">ADMIN</span>
                                             <span *ngIf="user.roles[0] === 'ROLE_USER'">USER</span>
                                             <span *ngIf="user.roles[0] === 'ROLE_RESP_STAGE'">RESPONSABLE STAGE</span>

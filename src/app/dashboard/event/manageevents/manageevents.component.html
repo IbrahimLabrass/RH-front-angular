@@ -2,14 +2,14 @@
         
         <!-- Dashboard Headline -->
         <div class="dashboard-headline">
-            <h3>Manage Events</h3>
+            <h3>Manage Event</h3>
 
             <!-- Breadcrumbs -->
             <nav id="breadcrumbs" class="dark">
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Dashboard</a></li>
-                    <li>Manage Event</li>
+                    <li>Manage Events</li>
                 </ul>
             </nav>
         </div>
@@ -28,7 +28,7 @@
 
                     <div class="content">
                         <ul class="dashboard-box-list">
-                            <li  *ngFor="let offre of offres" (click)="detail(offre)">
+                            <li  *ngFor="let event of events" (click)="detail(event)">
                                 <!-- Job Listing -->
                                 <div class="job-listing width-adjustment">
 
@@ -37,7 +37,7 @@
 
                                         <!-- Details -->
                                         <div class="job-listing-description">
-                                            <h3 class="job-listing-title"><a href="#">{{offre.titre}}</a> <span class="dashboard-status-button yellow">Expiring</span></h3>
+                                            <h3 class="job-listing-title"><a href="#">{{event.title}}</a> <span class="dashboard-status-button yellow">Expiring</span></h3>
 
                                             <!-- Job Listing Footer -->
                                             <div class="job-listing-footer">
@@ -60,7 +60,7 @@
                                 <div class="buttons-to-right always-visible">
                                     <a href="dashboard-manage-bidders.html" class="button ripple-effect"><i class="icon-material-outline-supervisor-account"></i> Manage Bidders <span class="button-info">3</span></a>
                                     <a href="#" class="button gray ripple-effect ico" title="Edit" data-tippy-placement="top"><i class="icon-feather-edit"></i></a>
-                                    <a (click)="deleteOffre(offre.id)" class="button gray ripple-effect ico" title="Remove" data-tippy-placement="top"><i class="icon-feather-trash-2"></i></a>
+                                    <a (click)="deleteOffre(event.id)" class="button gray ripple-effect ico" title="Remove" data-tippy-placement="top"><i class="icon-feather-trash-2"></i></a>
                                 </div>
                             </li>
 
@@ -76,7 +76,7 @@
         <div class="dashboard-footer-spacer"></div>
         <div class="small-footer margin-top-15">
             <div class="small-footer-copyrights">
-                © 2024 <strong>SEBN</strong>. All Rights Reserved.
+                © 2021 <strong>5edemti</strong>. All Rights Reserved.
             </div>
             <ul class="footer-social-links">
                 <li>

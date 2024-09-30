@@ -49,7 +49,6 @@ export class WorkDetailComponent implements OnInit {
     
     console.log(this.user);
     this.BidForm = this.fb.group({
-      prix: [],
       description: [],
       temps:[],
       offre: [{'id':this.work.id}],
@@ -105,7 +104,6 @@ export class WorkDetailComponent implements OnInit {
   accepter(bid){
     let record ={};
     record['etat'] ="accepter";
-    record['prix'] =bid.prix;
     record['description'] =bid.description;
     record['temps'] =bid.temps;
     this.condidatureService.updatecondidature(bid.id,record)

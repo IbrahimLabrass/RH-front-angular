@@ -13,7 +13,8 @@
             </div>
     
             <div class="row">
-                <form [formGroup]="eventForm" (ngSubmit)="addPost()" enctype="multipart/form-data">
+                <!-- Form for posting a stage -->
+                <form [formGroup]="stageForm" (ngSubmit)="addStage()" enctype="multipart/form-data">
                     <div class="col-xl-12">
                         <div class="dashboard-box margin-top-0">
                             <div class="headline">
@@ -21,6 +22,8 @@
                             </div>
                             <div class="content with-padding padding-bottom-10">
                                 <div class="row">
+                                    
+                                    <!-- File upload section -->
                                     <div class="col-xl-4">
                                         <div class="submit-field">
                                             <h5>Document</h5>
@@ -30,27 +33,31 @@
                                         </div>
                                     </div>
 
+                                    <!-- Stage Title -->
                                     <div class="col-xl-4">
                                         <div class="submit-field">
                                             <h5>Title</h5>
-                                            <input type="text" class="with-border" formControlName="titre" placeholder="e.g. build me a website">
+                                            <input type="text" class="with-border" formControlName="titre" placeholder="e.g. Build me a website">
                                         </div>
                                     </div>
 
+                                    <!-- Start Date -->
                                     <div class="col-xl-4">
                                         <div class="submit-field">
                                             <h5>Start Date</h5>
-                                            <input type="date" formControlName="date_debut">
+                                            <input type="date" formControlName="startDate">
                                         </div>
                                     </div>
 
+                                    <!-- End Date -->
                                     <div class="col-xl-4">
                                         <div class="submit-field">
                                             <h5>End Date</h5>
-                                            <input type="date" formControlName="date_fin">
+                                            <input type="date" formControlName="endDate">
                                         </div>
                                     </div>
 
+                                    <!-- Company Name -->
                                     <div class="col-xl-4">
                                         <div class="submit-field">
                                             <h5>Company</h5>
@@ -58,6 +65,7 @@
                                         </div>
                                     </div>
 
+                                    <!-- Required Skills -->
                                     <div class="col-xl-6">
                                         <div class="submit-field">
                                             <h5>Skills Required</h5>
@@ -65,17 +73,20 @@
                                         </div>
                                     </div>
 
+                                    <!-- Project Description -->
                                     <div class="col-xl-12">
                                         <div class="submit-field">
                                             <h5>Describe Your Project</h5>
                                             <textarea cols="30" rows="5" class="with-border" formControlName="description"></textarea>
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Submit Button -->
                     <div class="col-xl-12">
                         <button type="submit" class="button ripple-effect big margin-top-30">
                             <i class="icon-feather-plus"></i> Post a Stage

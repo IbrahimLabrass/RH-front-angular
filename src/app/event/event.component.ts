@@ -50,11 +50,11 @@ export class EventComponent implements OnInit {
 
   viewDetails(event) {
     localStorage.setItem('event', JSON.stringify(event));
-    this.router.navigate(['/event-detail']);
+    this.router.navigate(['/event-details']);
   }
 
   filterByLocation(location) {
-    this.events = this.events.filter(e => e.user.adresse === location.target.value);
+    this.events = this.events.filter(e => e.user.location === location.target.value);
   }
 
   filterByTitle(title) {

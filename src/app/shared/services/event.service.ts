@@ -20,7 +20,7 @@ export class EventService {
   
 
   getevent(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${id}`);
+    return this.http.get(`${this.createUrl}/${id}`);
   }
 
   createevent(event: Object): Observable<Object> {

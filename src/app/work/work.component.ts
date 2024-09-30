@@ -64,9 +64,9 @@ export class WorkComponent implements OnInit {
       error => console.log(error));
   }
 
-  detail(work)
+  detail(offre)
   {
-    localStorage.setItem('work',JSON.stringify(work));
+    localStorage.setItem('work',JSON.stringify(offre));
     this.router.navigate(['/work-detail']);
   }
 

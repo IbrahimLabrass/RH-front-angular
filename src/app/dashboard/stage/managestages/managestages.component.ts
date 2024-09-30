@@ -60,6 +60,6 @@ export class ManageStageComponent implements OnInit {
 
   detail(stage: any) {
     localStorage.setItem('stage', JSON.stringify(stage));
-    this.router.navigate(['/stage-detail']);
+    this.router.navigate(['/stage-details']);
   }
 }

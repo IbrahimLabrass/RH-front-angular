@@ -20,8 +20,8 @@
 					</div>
 					<div class="right-side">
 						<div class="salary-box">
-							<div class="salary-type">Project Budget</div>
-							<div class="salary-amount">{{work.prix}} DT</div>
+							<div class="salary-type">Date Pub</div>
+							<div class="salary-amount">{{work.date_publication}}</div>
 						</div>
 					</div>
 				</div>
@@ -35,7 +35,7 @@
 		<div class="col-xl-8 col-lg-8 content-right-offset">			
 			<!-- Description -->
 			<div class="single-page-section">
-				<h3 class="margin-bottom-25">Project Description</h3>
+				<h3 class="margin-bottom-25">Work Description</h3>
 				<p>{{work.contenu}}</p>
 				<img [src]="work.document" alt="">
 				<a *ngIf="extension != 'png'" href="{{url}}">{{work.document}}</a>
@@ -51,7 +51,7 @@
 			<!-- Freelancers Bidding -->
 			<div class="boxed-list margin-bottom-60">
 				<div class="boxed-list-headline">
-					<h3><i class="icon-material-outline-group"></i> Freelancers Bidding</h3>
+					<h3><i class="icon-material-outline-group"></i> Workers Bidding</h3>
 				</div>
 				<ul class="boxed-list-ul">
 					<li *ngFor="let bid of bids">
@@ -76,7 +76,7 @@
 							<!-- Bid -->
 							<div class="bids-bid">
 								<div class="bid-rate" *ngIf="work.user.id == user.id">
-									<div class="rate">{{bid.prix}} DT</div>
+									<div class="rate">{{bid.description}} DT</div>
 									<span>in {{bid.temps}}days</span>
 								</div>
 							</div>&nbsp;

@@ -47,7 +47,6 @@ import{AngularFireDatabaseModule} from '@angular/fire/database';
 import{AngularFirestore, AngularFirestoreModule} from '@angular/fire/firestore';
 import{AngularFireModule}from '@angular/fire';
 import{AngularFireAuth} from '@angular/fire/auth';
-import firebase from 'firebase/app';
 import { MessageComponent } from './dashboard/message/message.component';
 import { ContactsComponent } from './dashboard/contacts/contacts.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
@@ -65,6 +64,9 @@ import { StageComponent } from './stage/stage.component';
 import { EventComponent } from './event/event.component';
 import { StageDetailComponent } from './stage/stage-details/stage-details.component';
 import { EventDetailComponent } from './event/event-details/event-details.component';
+import { CommonModule } from '@angular/common';
+import { ManageEventsComponent } from './dashboard/event/manageevents/manageevents.component';
+import { ManageStageComponent } from './dashboard/stage/managestages/managestages.component';
     
       // Initialize Firebase
       export const config = {
@@ -131,18 +133,21 @@ import { EventDetailComponent } from './event/event-details/event-details.compon
     StageComponent,
     StageDetailComponent,
     EventComponent,
-    EventDetailComponent
+    EventDetailComponent,
+    ManageEventsComponent,
+    ManageStageComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    //AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule  
   ],
   providers: [AngularFireAuth,
     { provide: AngularFirestore },],

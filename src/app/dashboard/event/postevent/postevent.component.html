@@ -26,9 +26,10 @@
 					<div class="col-xl-4">
 					  <div class="submit-field">
 						<h5>Document</h5>
-						<input class="form-control" type="file" (change)="selectFile($event)" />
-						<input type="hidden" formControlName="document" #img>
-					  </div>
+                                            <input class="form-control" (change)="selectFile($event)" type="file" #f />
+                                            <input type="hidden" formControlName="document" #img>
+                                            <button type="button" (click)="upload(f, img)">Upload</button>
+                                        </div>
 					</div>
   
 					<!-- Title Input -->

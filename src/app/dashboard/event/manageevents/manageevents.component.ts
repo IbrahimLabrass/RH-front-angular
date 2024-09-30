@@ -16,7 +16,7 @@ export class ManageEventsComponent implements OnInit {
   
   board: string;
   errorMessage: string;
-  offres: any;
+  events: any;
   username: string;
   user: any;
   bids: any;
@@ -35,7 +35,7 @@ export class ManageEventsComponent implements OnInit {
     this.getOffres();
   }
   getOffres(){
-    /*
+    
     this.condidatureService.getcondidatureList().subscribe(
       data => {
         this.board = data;
@@ -53,16 +53,16 @@ export class ManageEventsComponent implements OnInit {
         console.log(error);
       }
     );
-    */
+    
     this.eventservice.geteventList().subscribe(
       data => {
         this.board = data;
         //console.log(data);
-        this.offres = data;      
-        this.offres = this.offres.filter(s=>{
+        this.events = data;      
+        this.events = this.events.filter(s=>{
           return s.user.id == this.user.id;
         });  
-        console.log(this.offres);
+        console.log(this.events);
       },
       error => {
         //this.errorMessage = `${error.status}: ${JSON.parse(error.error).message}`;
@@ -82,9 +82,9 @@ export class ManageEventsComponent implements OnInit {
       error => console.log(error));
   }
 
-  detail(work)
+  detail(event)
   {
-    localStorage.setItem('work',JSON.stringify(work));
-    this.router.navigate(['/work-detail']);
+    localStorage.setItem('work',JSON.stringify(event));
+    this.router.navigate(['/event-details']);
   }
 }

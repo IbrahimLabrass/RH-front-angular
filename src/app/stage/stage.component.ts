@@ -49,7 +49,7 @@ export class StageComponent implements OnInit {
 
   viewDetails(stage) {
     localStorage.setItem('stage', JSON.stringify(stage));
-    this.router.navigate(['/stage-detail']);
+    this.router.navigate(['/stage-details']);
   }
 
   filterByLocation(location) {

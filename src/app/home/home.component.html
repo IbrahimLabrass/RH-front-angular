@@ -163,7 +163,7 @@
           <div class="listings-container compact-list-layout margin-top-35">
             
             <!-- Job Listing -->
-            <a *ngFor="let offre of offres" href="single-job-page.html" class="job-listing with-apply-button">
+            <a *ngFor="let offre of offres" href="/work" class="job-listing with-apply-button">
               <div class="job-listing-details">
                 <!-- Logo -->
                 <div class="job-listing-company-logo">
@@ -201,33 +201,37 @@
           <!-- Section Headline -->
           <div class="section-headline margin-top-0 margin-bottom-35">
             <h3>Upcoming Events</h3>
-            <a href="/events" class="headline-link">Browse All Events</a>
+            <a href="/event" class="headline-link">Browse All Events</a>
           </div>
           
           <!-- Events Container -->
           <div class="listings-container compact-list-layout margin-top-35">
             
             <!-- Event Listing -->
-            <a *ngFor="let event of events" href="single-event-page.html" class="event-listing with-apply-button">
-              <div class="event-listing-details">
+            <a *ngFor="let event of events" href="/event/{{event.id}}" class="job-listing with-apply-button">
+              <div class="job-listing-details">
                 <!-- Logo -->
-                <div class="event-listing-company-logo">
+                <div class="job-listing-company-logo">
                   <img src="../../assets/images/company-logo-01.png" alt="">
                 </div>
+                
                 <!-- Details -->
-                <div class="event-listing-description">
-                  <h3 class="event-listing-title">{{ event.title }}</h3>
-                  <div class="event-listing-footer">
+                <div class="job-listing-description">
+                  <h3 class="job-listing-title">{{ event.title }}</h3>
+                  <div class="job-listing-footer">
                     <ul>
-                      <li><i class="icon-material-outline-access-time"></i> {{event.date}}</li>
-                      <li><i class="icon-material-outline-location-on"></i> {{event.location}}</li>
+                      <li><i class="icon-material-outline-access-time"></i> {{ event.date }}</li>
+                      <li><i class="icon-material-outline-location-on"></i> {{ event.location }}</li>
+                      <li><i class="icon-material-outline-description"></i> {{ event.description }}</li>
                     </ul>
                   </div>
                 </div>
+            
                 <!-- Apply Button -->
                 <span class="list-apply-button ripple-effect">View Event</span>
               </div>
             </a>
+            
           </div>
           <!-- Events Container / End -->
         </div>

@@ -76,7 +76,7 @@ const routes: Routes = [
     {path: 'event/postevent', component: PostEventComponent},
     {path: 'event/updateevents', component: UpdateEventComponent},
 
-    {path: 'stage/managestage', component: ManageStageComponent},
+    {path: 'stage/managestages', component: ManageStageComponent},
     {path: 'stage/poststage', component: PostStageComponent},
     {path: 'stage/updatestage', component: UpdateStageComponent},
 

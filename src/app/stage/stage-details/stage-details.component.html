@@ -1,82 +1,125 @@
-<div class="stage-details-container">
-    <!-- Display stage details -->
-    <div class="stage-info">
-      <h2>{{ stage?.title }}</h2>
-      <p><strong>Description:</strong> {{ stage?.description }}</p>
-      <p><strong>Skills Required:</strong></p>
-      <ul>
-        <li *ngFor="let skill of skills">{{ skill }}</li>
-      </ul>
-    </div>
-  
-    <!-- Form for submitting a new candidature -->
-    <div class="candidature-form">
-      <h3>Submit your Candidature</h3>
-      <form [formGroup]="candidatureForm" (ngSubmit)="submitCandidature()">
-        <div class="form-group">
-          <label for="prix">Prix</label>
-          <input id="prix" formControlName="prix" type="number" class="form-control" />
-          <div *ngIf="candidatureForm.get('prix').invalid && candidatureForm.get('prix').touched" class="error-message">
-            Price is required.
+<!-- Titlebar -->
+<div class="single-page-header" data-background-image="images/single-task.jpg">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="single-page-header-inner">
+          <div class="left-side">
+            <div class="header-image">
+              <img src="../../assets/images/company-logo-01.png" alt="Stage Logo">
+            </div>
+            <div class="header-details">
+              <h3>{{ stage?.title }}</h3>
+              <h5>About the Organizer</h5>
+              <ul>
+                <li><i class="icon-material-outline-business"></i> SEBN</li>
+                <li><img class="flag" src="images/flags/de.svg" alt="">{{ stage?.location }}</li>
+                <li><div class="verified-badge-with-title">Verified</div></li>
+              </ul>
+            </div>
+          </div>
+          <div class="right-side">
+            <div class="salary-box">
+              <div class="salary-type">Stage Duration</div>
+              <div class="salary-amount">{{ stage?.startDate }}</div>
+            </div>
           </div>
         </div>
-  
-        <div class="form-group">
-          <label for="description">Description</label>
-          <textarea id="description" formControlName="description" class="form-control"></textarea>
-          <div *ngIf="candidatureForm.get('description').invalid && candidatureForm.get('description').touched" class="error-message">
-            Description is required.
-          </div>
-        </div>
-  
-        <div class="form-group">
-          <label for="temps">Temps (Timeframe)</label>
-          <input id="temps" formControlName="temps" type="text" class="form-control" />
-          <div *ngIf="candidatureForm.get('temps').invalid && candidatureForm.get('temps').touched" class="error-message">
-            Timeframe is required.
-          </div>
-        </div>
-  
-        <button type="submit" class="btn btn-primary" [disabled]="candidatureForm.invalid">Submit Candidature</button>
-      </form>
-    </div>
-  
-    <!-- List of Candidatures -->
-    <div class="candidature-list">
-      <h3>Candidatures for this Stage</h3>
-      <div *ngIf="candidatures?.length > 0; else noCandidatures">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>User</th>
-              <th>Price</th>
-              <th>Description</th>
-              <th>Timeframe</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let candidature of candidatures">
-              <td>{{ candidature.user.name }}</td>
-              <td>{{ candidature.prix }}</td>
-              <td>{{ candidature.description }}</td>
-              <td>{{ candidature.temps }}</td>
-              <td>{{ candidature.etat }}</td>
-              <td>
-                <button *ngIf="candidature.etat === 'En attente'" class="btn btn-success" (click)="acceptCandidature(candidature)">
-                  Accept
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
       </div>
-  
-      <!-- No Candidatures Available -->
-      <ng-template #noCandidatures>
-        <p>No candidatures submitted for this stage yet.</p>
-      </ng-template>
     </div>
   </div>
-  
+</div>
+
+<div class="container">
+  <div class="row">
+    <!-- Content -->
+    <div class="col-xl-8 col-lg-8 content-right-offset">
+      <!-- Description -->
+      <div class="single-page-section">
+        <h3 class="margin-bottom-25">Stage Description</h3>
+        <p>{{ stage?.description }}</p>
+        <img [src]="stage?.document" alt="Stage Document">
+        <a *ngIf="stage?.documentExtension !== 'png'" href="{{ stage?.document }}">Download Document</a>
+      </div>
+
+      <!-- Skills Required -->
+      <div class="single-page-section">
+        <h3>Skills Required</h3>
+        <div class="task-tags">
+          <span *ngFor="let skill of stage?.skills">{{ skill }}</span>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+
+      <!-- Candidatures -->
+      <div class="boxed-list margin-bottom-60">
+        <div class="boxed-list-headline">
+          <h3><i class="icon-material-outline-group"></i> Candidatures for this Stage</h3>
+        </div>
+        <ul class="boxed-list-ul">
+          <li *ngFor="let candidature of candidatures">
+            <div class="bid">
+              <!-- Avatar -->
+              <div class="bids-avatar">
+                <div class="freelancer-avatar">
+                  <img src="images/user-avatar-big-01.jpg" alt="">
+                </div>
+              </div>
+
+              <!-- Content -->
+              <div class="bids-content">
+                <div class="freelancer-name">
+                  <h4>{{ candidature.user.name }}</h4>
+                </div>
+              </div>
+
+              <!-- Accept Candidature -->
+              <div *ngIf="stage.user.id  === user.id">
+                <a *ngIf="candidature.etat === 'En attente'" (click)="acceptCandidature(candidature)" class="button ripple-effect">Accept</a>
+                <a *ngIf="candidature.etat === 'Accepter'" class="glyph fs1">
+                  <span class="icon-material-outline-check-circle"></span>
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="col-xl-4 col-lg-4">
+      <div class="sidebar-container">
+        <!-- Countdown for Stage -->
+        <div class="countdown green margin-bottom-35">Days Left</div>
+
+        <!-- Submit Candidature Form -->
+        <div class="sidebar-widget">
+          <div class="bidding-widget">
+            <div class="bidding-headline">
+              <h3>Submit Candidature</h3>
+            </div>
+            <form [formGroup]="candidatureForm">
+              <div class="bidding-inner">
+                <span class="bidding-detail"><strong>First Name</strong></span>
+                <input formControlName="firstName" type="text" placeholder="Enter your first name" />
+
+                <span class="bidding-detail margin-top-30"><strong>Last Name</strong></span>
+                <input formControlName="lastName" type="text" placeholder="Enter your last name" />
+
+                <span class="bidding-detail margin-top-30"><strong>Description</strong></span>
+                <textarea formControlName="description" placeholder="Enter description"></textarea>
+
+                <span class="bidding-detail margin-top-30"><strong>Years of Experience</strong></span>
+                <input formControlName="experience" type="number" placeholder="Enter years of experience" />
+
+                <button (click)="submitCandidature()" class="button ripple-effect full-width margin-top-30">Submit Candidature</button>
+              </div>
+            </form>
+            <div class="bidding-signup">Don't have an account? <a href="#sign-in-dialog" class="register-tab sign-in popup-with-zoom-anim">Sign Up</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

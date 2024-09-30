@@ -9,8 +9,7 @@ import { CondidatureService } from 'src/app/shared/services/condidature.service'
 })
 export class StageDetailComponent implements OnInit {
   stage: any;
-  skills: string[];
-  candidatures: any[];
+  candidatures: any[] = [];
   user: any;
   candidatureForm: FormGroup;
 
@@ -23,13 +22,6 @@ export class StageDetailComponent implements OnInit {
     // Retrieve and parse stored stage and user information from localStorage
     this.stage = this.getStoredData('stage');
     this.user = this.getStoredData('userinfo');
-
-    // Check if stage and user information is available
-    if (this.stage) {
-      this.skills = this.stage.skills.split(";");
-    } else {
-      console.error("Stage data is not available.");
-    }
 
     // Initialize the form with validators
     this.initForm();
@@ -47,12 +39,13 @@ export class StageDetailComponent implements OnInit {
   // Initialize the form with default values and validators
   initForm() {
     this.candidatureForm = this.fb.group({
-      prix: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       description: ['', Validators.required],
-      temps: ['', Validators.required],
+      experience: ['', [Validators.required, Validators.min(0)]],
       stage: [{ id: this.stage?.id }],
       user: [{ id: this.user?.id }],
-      etat: ['En attente', Validators.required],
+      etat: ['En attente'] // Default state is 'En attente'
     });
   }
 

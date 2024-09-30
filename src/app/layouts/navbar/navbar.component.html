@@ -55,8 +55,44 @@
             <!-- Right Side Content -->
             <div class="right-side">
                 <div *ngIf="isConneted === 'yes'">
-                    <!-- User Notifications and Menu -->
-                    <!-- (existing user menu code here) -->
+    <!-- User Menu -->
+    <div class="header-widget">
+
+        <!-- User Avatar / Dropdown -->
+        <div class="header-notifications user-menu">
+            <div class="header-notifications-trigger">
+                <a href="#"><div class="user-avatar status-online"><img [src]="" alt=""></div></a>
+            </div>
+
+            <!-- Dropdown -->
+            <div class="header-notifications-dropdown">
+
+                <!-- User Status -->
+                <div class="user-status">
+
+                    <!-- User Name / Avatar -->
+                    <div class="user-details">
+                        <div class="user-avatar status-online"><img [src]="" alt=""></div>
+                        <div class="user-name">
+                            <a href="/dashboard/profile">{{user.username}}</a>
+                            <span *ngIf="user.roles[1] === 'ROLE_ADMIN'">ADMIN</span>
+                            <span *ngIf="user.roles[0] === 'ROLE_USER'">USER</span>
+                            <span *ngIf="user.roles[2] === 'ROLE_RESP_STAGE'">RESPONSABLE STAGE</span>
+                            <span *ngIf="user.roles[3] === 'ROLE_RESP_RECRU'">RESPONSABLE RECRUTEMENT</span>
+                            <span *ngIf="user.roles[4] === 'ROLE_RESP_EVEN'">RESPONSABLE EVENTS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="user-menu-small-nav">
+                    <li><a href="/dashboard"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
+                    <li><a (click)="logout()"><i class="icon-material-outline-power-settings-new"></i> Déconnexion</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+    </div>                    <!-- (existing user menu code here) -->
                 </div>
 
                 <div *ngIf="isConneted !== 'yes'" class="header-widget">

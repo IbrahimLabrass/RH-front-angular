@@ -56,20 +56,20 @@
 			</div>
 
 			<div class="listings-container grid-layout margin-top-35">
-				<a (click)="detail(stage)" class="job-listing" *ngFor="let stage of stages">
+				<a (click)="viewDetails(stage)" class="job-listing" *ngFor="let stage of stages">
 					<div class="job-listing-details">
 						<div class="job-listing-company-logo">
 							<img src="../../assets/images/company-logo-01.png" alt="">
 						</div>
 						<div class="job-listing-description">
-							<h3 class="job-listing-title">{{stage.titre}}</h3>
+							<h3 class="job-listing-title">{{stage.title}}</h3>
 						</div>
 					</div>
 					<div class="job-listing-footer">
 						<ul>
-							<li><i class="icon-material-outline-location-on"></i> {{stage.user.adresse}}</li>
-							<li><i class="icon-material-outline-business-center"></i> {{stage.date_debut | date:'short'}}</li>
-							<li><i class="icon-material-outline-account-balance-wallet"></i> {{stage.stipend}} DT</li>
+							<li><i class="icon-material-outline-location-on"></i> {{stage.company}}</li>
+							<li><i class="icon-material-outline-business-center"></i> {{stage.startDate | date:'short'}}</li>
+							<li><i class="icon-material-outline-account-balance-wallet"></i> {{stage.skills}} </li>
 						</ul>
 					</div>
 				</a>

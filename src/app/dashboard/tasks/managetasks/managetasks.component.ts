@@ -35,7 +35,7 @@ export class ManagetasksComponent implements OnInit {
     this.getOffres();
   }
   getOffres(){
-    /*
+    
     this.condidatureService.getcondidatureList().subscribe(
       data => {
         this.board = data;
@@ -53,7 +53,7 @@ export class ManagetasksComponent implements OnInit {
         console.log(error);
       }
     );
-    */
+    
     this.offreService.getOffreList().subscribe(
       data => {
         this.board = data;
